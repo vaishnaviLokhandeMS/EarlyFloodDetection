@@ -16,9 +16,21 @@
     font-weight: bold;
   }
   
+  .dropdownWrapper {
+    margin-bottom: 20px;
+  }
+  
+  .selectDropdown {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  
   .chartWrapper {
-    margin: 30px 0;
-    padding: 15px;
+    margin-top: 30px;
+    padding: 20px;
     background: #0f0f1a;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 136, 204, 0.5);

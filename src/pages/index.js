@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar/Navbar";
 import StationDetails from "../components/StationDetails/StationDetails";
 import HighRiskCharts from "../components/Charts/HighRiskChart";
+import Footer from "../components/Footer/Footer";
 
 const MapComponent = dynamic(
   () => import("../components/MapComponent/MapComponent"),
@@ -17,6 +18,7 @@ export default function Home() {
       <MapComponent />
       <StationDetails />
       <HighRiskCharts />
+      <Footer />
     </div>
   );
 }
