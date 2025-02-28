@@ -1,64 +1,59 @@
 /* Navbar Container */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1a1a2e;
-    color: white;
-    padding: 10px 30px; /* Reduced padding to decrease height */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    font-family: "Poppins", sans-serif; /* Modern and clean font */
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 20px; /* Reduced font size */
-    font-weight: 600;
-  }
-  
-  .icon {
-    font-size: 24px; /* Adjusted size to match the reduced height */
-    color: #00aaff;
-  }
-  
-  /* Navigation Links */
-  .navLinks {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-  }
-  
-  .navLinks li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px; /* Reduced size */
-    font-weight: 500;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .navLinks li a:hover {
-    color: #00aaff;
-    text-shadow: 0 0 6px rgba(0, 170, 255, 0.7);
-  }
-  
-  /* Login Button */
-  .loginBtn {
-    background-color: transparent;
-    color: white;
-    border: 1.5px solid #00aaff; /* Slightly thinner border */
-    padding: 6px 14px; /* Reduced button size */
-    font-size: 14px; /* Reduced text size */
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .loginBtn:hover {
-    background-color: #00aaff;
-    color: #1a1a2e;
-    box-shadow: 0 0 8px rgba(0, 170, 255, 0.8);
-  }
-  
+  display: flex;
+  align-items: center;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 10px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin-left: auto; /* Pushes nav links to the right */
+  margin-right: 20px; /* Space between nav links and login button */
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navLinks li a:hover {
+  color: #00aaff;
+  text-shadow: 0 0 6px rgba(0, 170, 255, 0.7);
+}
+
+/* Login Button */
+.loginBtn {
+  background-color: transparent;
+  color: white;
+  border: 1.5px solid #00aaff;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.loginBtn:hover {
+  background-color: #00aaff;
+  color: #1a1a2e;
+  box-shadow: 0 0 8px rgba(0, 170, 255, 0.8);
+}
