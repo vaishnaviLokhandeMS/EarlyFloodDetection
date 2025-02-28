@@ -1,0 +1,39 @@
+/* Map Container */
+.mapContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Increased width */
+    height: 75vh; /* Increased height */
+    margin: 50px auto 20px auto; /* More spacing from navbar */
+    background: #1a1a2e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Map Styling */
+  .map {
+    height: 85%;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  /* Map Description */
+/* Map Description */
+.mapDescription {
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif; /* Modern font */
+    margin-top: 10px;
+    max-width: 90%; /* Ensures text does not exceed container */
+    font-weight: 500;
+    white-space: normal; /* Allows wrapping */
+    word-wrap: break-word; /* Prevents overflow */
+  }
+  
+  
