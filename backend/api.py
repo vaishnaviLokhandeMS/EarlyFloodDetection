@@ -84,6 +84,59 @@ async def get_station_data():
         return response_data
     except Exception as e:
         return {"error": str(e)}
+    
+@app.get("/station-data/{station_name}")
+async def get_station_data(station_name: str):
+    try:
+        # Normalize the station name for comparison
+        station_name = station_name.strip().title()
+
+        # Debugging: Print received station name
+        print("Searching for Station:", station_name)
+
+        # Debugging: Print available station names in dataset
+        unique_stations = df["Station_Names"].str.strip().str.title().unique()
+        print("Available Stations:", unique_stations)
+
+        # Filter only when "Flood?" is 1
+        filtered_df = df[
+            (df["Station_Names"].str.strip().str.title() == station_name) & (df["Flood?"] == 1)
+        ]
+
+        if filtered_df.empty:
+            return {"message": f"No flood data available for {station_name}."}
+
+        data = filtered_df[["Year", "Rainfall", "Max_Temp"]].to_dict(orient="records")
+
+        return {"station": station_name, "data": data}
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/station-yearly-data/{station_name}")
+async def get_station_yearly_data(station_name: str):
+    """
+    API to fetch yearly trend data (Rainfall & Temperature) for a selected station.
+    """
+    try:
+        # Normalize station name for better matching
+        station_name = station_name.strip().title()
+
+        # Filter the dataset for the selected station
+        station_df = df[df["Station_Names"].str.strip().str.title() == station_name]
+
+        if station_df.empty:
+            return {"message": f"No data available for {station_name}."}
+
+        # Group data by Year and take mean values for Rainfall and Temperature
+        yearly_data = (
+            station_df.groupby("Year")[["Rainfall", "Max_Temp"]].mean().reset_index()
+        )
+
+        return {"station": station_name, "data": yearly_data.to_dict(orient="records")}
+    
+    except Exception as e:
+        return {"error": str(e)}
+
 
 if __name__ == "__main__":
     import uvicorn

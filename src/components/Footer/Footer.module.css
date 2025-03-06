@@ -1,0 +1,9 @@
+.footer {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 10px 0; /* Small height */
+    font-size: 14px;
+    border-top: none; /* Removes green border */
+  }
+  
