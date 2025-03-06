@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import styles from "./StationDetails.module.css";
 
 const StationDetails = () => {
@@ -56,24 +58,19 @@ const StationDetails = () => {
         <input className={styles.inputField} type="number" name="Year" placeholder="Year" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Month" placeholder="Month" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Max_Temp" placeholder="Max Temp (°C)" step="any" onChange={handleChange} required />
-
         <input className={styles.inputField} type="number" name="Min_Temp" placeholder="Min Temp (°C)" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Rainfall" placeholder="Rainfall (mm)" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Relative_Humidity" placeholder="Relative Humidity (%)" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Wind_Speed" placeholder="Wind Speed (m/s)" step="any" onChange={handleChange} required />
-
         <input className={styles.inputField} type="number" name="Cloud_Coverage" placeholder="Cloud Coverage (%)" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Bright_Sunshine" placeholder="Bright Sunshine (hrs)" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="Station_Number" placeholder="Station Number" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="X_COR" placeholder="X Coordinate" step="any" onChange={handleChange} required />
-
         <input className={styles.inputField} type="number" name="Y_COR" placeholder="Y Coordinate" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="LATITUDE" placeholder="Latitude" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="LONGITUDE" placeholder="Longitude" step="any" onChange={handleChange} required />
         <input className={styles.inputField} type="number" name="ALT" placeholder="Altitude" onChange={handleChange} required />
-
         <input className={styles.inputField} type="number" name="Period" placeholder="Period" step="any" onChange={handleChange} required />
-
 
         <button type="submit" className={styles.submitBtn}>Predict Flood Risk</button>
       </form>
@@ -81,8 +78,25 @@ const StationDetails = () => {
       {prediction && (
         <div className={styles.result}>
           <h3>Prediction Result</h3>
-          <p><strong>Flood Prediction:</strong> {prediction.flood_prediction}</p>
-          <p><strong>Risk Percentage:</strong> {prediction.risk_percentage.toFixed(2)}%</p>
+          <p className={styles.floodPrediction}>
+            <strong>Flood Prediction:</strong> {prediction.flood_prediction}
+          </p>
+
+          <div className={styles.progressWrapper}>
+            <p className={styles.riskLabel}>Flood Risk Prediction</p>
+            <div className={styles.progressContainer}>
+              <CircularProgressbar
+                value={prediction.risk_percentage}
+                text={`${prediction.risk_percentage.toFixed(2)}%`}
+                styles={buildStyles({
+                  textColor: "#ffffff",
+                  pathColor: prediction.risk_percentage > 70 ? "#ff4c4c" : "#00cc99",
+                  trailColor: "#222233",
+                  textSize: "16px",
+                })}
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>
