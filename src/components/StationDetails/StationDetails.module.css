@@ -10,25 +10,20 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Heading Style */
 .heading {
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
 }
 
-/* Grid Layout - Structured Properly */
 .form {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
-    justify-content: center;
-    align-items: center;
-    width: 90%;  /* Fixing width issue */
-    margin: auto; /* Centering the form */
+    width: 90%;
+    margin: auto;
 }
 
-/* Consistent input field size */
 .inputField {
     background: #0f0f1a;
     color: white;
@@ -36,7 +31,7 @@
     padding: 12px;
     font-size: 16px;
     border-radius: 5px;
-    width: 100%; /* Now it adjusts to grid */
+    width: 100%;
     text-align: center;
 }
 
@@ -50,7 +45,6 @@
     box-shadow: 0 0 8px rgba(0, 204, 255, 0.7);
 }
 
-/* Submit Button */
 .submitBtn {
     background: #00aaff;
     color: white;
@@ -60,11 +54,39 @@
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.3s ease;
-    grid-column: span 4; /* Button spans full width */
+    grid-column: span 4;
     margin-top: 15px;
 }
 
 .submitBtn:hover {
     background: #0088cc;
     box-shadow: 0 0 10px rgba(0, 136, 204, 0.9);
+}
+
+.result {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.floodPrediction {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progressWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.riskLabel {
+    font-size: 16px;
+    color: #bbbbbb;
+}
+
+.progressContainer {
+    width: 160px;
+    height: 160px;
 }
