@@ -1,28 +1,32 @@
-import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  CircleMarker,
+  Popup,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
-import UploadCSV from "./UploadCSV"; 
+import UploadCSV from "./UploadCSV";
 import styles from "./MapComponent.module.css";
 
-// Function to get dynamic marker color & radius based on risk level
 const getMarkerProperties = (risk) => {
   let color;
-  let radius = 10; // Default circle size
+  let radius = 10;
 
   if (risk > 60) {
-    color = "red"; // High Risk 🔴
+    color = "red";
     radius = 15;
   } else if (risk > 40) {
-    color = "blue"; // Moderate Risk 🔵
+    color = "blue";
     radius = 12;
   } else {
-    color = "green"; // Low Risk 🟢
+    color = "green";
   }
 
   return { color, radius };
 };
 
-// Component to adjust map bounds dynamically
 const MapBounds = ({ stations }) => {
   const map = useMap();
   useEffect(() => {
@@ -41,7 +45,6 @@ const MapComponent = () => {
     <div className={styles.mapContainer}>
       <h2 className={styles.title}>Flood Risk Prediction Map</h2>
 
-      {/* Upload CSV Component */}
       <UploadCSV setStations={setStations} />
 
       <MapContainer center={[19.07, 72.87]} zoom={7} className={styles.map}>
@@ -61,11 +64,17 @@ const MapComponent = () => {
             >
               <Popup>
                 <strong>{station.name}</strong> <br />
-                <strong>Risk:</strong> {station.risk !== undefined ? `${station.risk.toFixed(2)}%` : "Data Pending"} <br />
-                <strong>Status:</strong> 
-                {station.risk > 60 ? "🔴 High Alert" : 
-                 station.risk > 40 ? "🔵 Moderate Risk" : 
-                 "🟢 Low Risk"}
+                <strong>Risk:</strong>{" "}
+                {station.risk !== undefined
+                  ? `${station.risk.toFixed(2)}%`
+                  : "Data Pending"}{" "}
+                <br />
+                <strong>Status:</strong>
+                {station.risk > 60
+                  ? "🔴 High Alert"
+                  : station.risk > 40
+                  ? "🔵 Moderate Risk"
+                  : "🟢 Low Risk"}
               </Popup>
             </CircleMarker>
           );

@@ -1,4 +1,4 @@
-import "../styles/globals.css"; // ✅ Correct way to import global styles
+import "../styles/globals.css"; 
 
 import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar/Navbar";
