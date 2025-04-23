@@ -84,7 +84,7 @@ const StationChart = () => {
 
       try {
         const monthlyResponse = await fetch(
-          `http://localhost:8000/station-monthly-data/${selectedStation}`
+          `http://localhost:8002/station-monthly-data/${selectedStation}`
         );
         const monthlyResult = await monthlyResponse.json();
         setMonthlyRainfallData(monthlyResult.data || []);

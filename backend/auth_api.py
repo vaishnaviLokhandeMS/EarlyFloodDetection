@@ -66,4 +66,4 @@ async def read_users_me(token: str = Depends(oauth2_scheme)):
         raise HTTPException(status_code=403, detail="Could not validate credentials")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8002)
