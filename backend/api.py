@@ -7,11 +7,12 @@ from twilio.rest import Client
 import smtplib
 from email.message import EmailMessage
 
+# Initialize FastAPI app
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],  # Allows requests from any frontend domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
