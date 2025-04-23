@@ -1,89 +1,110 @@
 .container {
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 81%;
+  height: 100%;
+  margin: 40px auto;
   background: #1a1a2e;
-  border-radius: 10px;
+  padding: 50px;
+  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  color: white;
-  font-family: "Poppins", sans-serif;
 }
 
 .heading {
-  font-size: 26px;
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.8rem;
   font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--text-primary);
 }
 
-/* Dropdown styling */
 .dropdownWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .selectDropdown {
-  padding: 10px;
-  font-size: 16px;
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
-  border: none;
+  cursor: pointer;
   outline: none;
+  background-color: rgb(47, 31, 106);
+  color: var(--text-primary);
 }
 
-/* 🟢 NEW: Grid layout for charts */
 .chartsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 50px; /* Space between charts */
-  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 70px;
+  justify-items: center;
+  margin-top: 10px;
 }
 
 .chartWrapper {
-  background: #222240;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 400px; /* Ensures both are same height */
-  width: 95%;
+  width: 100%;
+  padding: 15px;
+  background: #1f1f3d;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
-.chartHeader {
+.chartWrapper:hover {
+  transform: scale(1.02);
+}
+
+.chartWrapper h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+}
+
+.barChart {
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pieChart {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: 12px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  justify-content: center;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Responsive adjustments */
-@media (max-width: 850px) {
-  .chartsGrid {
-    grid-template-columns: 1fr; /* Single column on smaller screens */
-  }
-}
-
-/* ✅ Stylish button */
-.toggleButton {
-  background: linear-gradient(135deg, #007bff, #00d4ff);
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.toggleButton:hover {
-  background: linear-gradient(135deg, #0056b3, #0088cc);
+.pieChart:hover {
   transform: scale(1.05);
 }
 
-.toggleButton:active {
-  transform: scale(0.98);
+.recharts-legend-item {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 
+@media (max-width: 850px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chartWrapper {
+    max-width: 90%;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+}
