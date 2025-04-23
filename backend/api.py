@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 
-FAST2SMS_API_KEY = "7rfAPiQcuevJXmlFGYVhbdpgZC6MDwWN2xLz9H415sk0tKIoO34hjDdxg2NFRQU0b1AifT8ZmvWzBesV"
+FAST2SMS_API_KEY = "API Key"
 
 # Load flood dataset
 df = pd.read_csv("data/flood_data.csv")
