@@ -67,7 +67,7 @@ const UploadCSV = ({ setStations }) => {
           };
 
           try {
-            const response = await axios.post("http://localhost:8000/predict", station, {
+            const response = await axios.post("http://localhost:8002/predict", station, {
               headers: { "Content-Type": "application/json" },
             });
 

@@ -25,6 +25,7 @@ const StationDetails = () => {
   });
 
   const [prediction, setPrediction] = useState(null);
+  const [alertSent, setAlertSent] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,9 +33,10 @@ const StationDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setAlertSent(false);
 
     try {
-      const response = await fetch("http://localhost:8000/predict", {
+      const response = await fetch("http://localhost:8002/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,6 +48,31 @@ const StationDetails = () => {
       setPrediction(data);
     } catch (error) {
       console.error("Error fetching prediction:", error);
+    }
+  };
+
+  const sendAlert = async () => {
+    try {
+      const response = await fetch("http://localhost:8002/trigger-alert", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `⚠️ Flood Alert: Flood risk is ${prediction ? prediction.risk_percentage.toFixed(2) : 'unknown'}% at station ${formData.Station_Names}`,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        setAlertSent(true);
+        alert("🚨 Alert sent successfully!");
+      } else {
+        alert("❌ Failed to send alert.");
+      }
+    } catch (err) {
+      console.error("Alert error:", err);
+      alert("❌ Error sending alert.");
     }
   };
 
@@ -74,6 +101,12 @@ const StationDetails = () => {
 
         <button type="submit" className={styles.submitBtn}>Predict Flood Risk</button>
       </form>
+
+      {/* Moved the Alert button outside the prediction check */}
+      <button onClick={sendAlert} className={styles.alertButton}>
+        🚨 Send Emergency Alert
+      </button>
+      {alertSent && <p className={styles.alertSuccess}>✅ Alert Sent Successfully!</p>}
 
       {prediction && (
         <div className={styles.result}>
