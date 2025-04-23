@@ -90,3 +90,22 @@
     width: 160px;
     height: 160px;
 }
+
+.alertButton {
+    margin-top: 20px;
+    background: #ff4c4c;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  .alertButton:hover {
+    background: #e60000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  

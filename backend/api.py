@@ -3,12 +3,65 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from ml_model.predict import predict_flood
 import pandas as pd
+from twilio.rest import Client
+import smtplib
+from email.message import EmailMessage
+
+# Initialize FastAPI app
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows requests from any frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+FAST2SMS_API_KEY = "API Key"
+
+df = pd.read_csv("data/flood_data.csv")
+
+class FloodInput(BaseModel):
+    Station_Names: str
+    Year: int
+    Month: int
+    Max_Temp: float
+    Min_Temp: float
+    Rainfall: float
+    Relative_Humidity: int
+    Wind_Speed: float
+    Cloud_Coverage: float
+    Bright_Sunshine: float
+    Station_Number: int
+    X_COR: float
+    Y_COR: float
+    LATITUDE: float
+    LONGITUDE: float
+    ALT: int
+    Period: float
+
+EMAIL_SENDER = "lokhande.vaishnavi@outlook.com"
+EMAIL_PASSWORD = "Mangal22@1234"
+EMAIL_RECEIVER = "baragemanish6258@gmail.com"
+
+class AlertRequest(BaseModel):
+    message: str
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from ml_model.predict import predict_flood
+import pandas as pd
+import smtplib
+from email.message import EmailMessage
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,6 +87,29 @@ class FloodInput(BaseModel):
     LONGITUDE: float
     ALT: int
     Period: float
+
+class AlertRequest(BaseModel):
+    message: str
+
+
+TWILIO_ACCOUNT_SID = 'ACef2e76361c794fb29705a634f814b41b'
+TWILIO_AUTH_TOKEN = '2ab95028f5d547f161f217ec0a0f20d0'
+TWILIO_WHATSAPP_NUMBER = '+13465478463'  
+PERSONAL_WHATSAPP_NUMBER = '+917841856258'     
+
+@app.post("/trigger-alert")
+async def trigger_alert(data: AlertRequest):
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    try:
+        message = client.messages.create(
+            body=data.message,
+            from_=TWILIO_WHATSAPP_NUMBER,
+            to=PERSONAL_WHATSAPP_NUMBER
+        )
+        return {"status": "success", "message": "WhatsApp message sent successfully!"}
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @app.post("/predict")
 async def predict_flood_risk(data: FloodInput):
@@ -126,4 +202,4 @@ async def get_station_yearly_data(station_name: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8002)

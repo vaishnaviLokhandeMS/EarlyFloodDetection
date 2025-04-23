@@ -48,7 +48,7 @@ const StationChart = () => {
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const response = await fetch("http://localhost:8000/stations");
+        const response = await fetch("http://localhost:8002/stations");
         const result = await response.json();
         setStations(result.stations.map((s) => s.Station_Names));
       } catch (error) {
@@ -64,9 +64,7 @@ const StationChart = () => {
     const fetchChartData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:8000/station-data/${selectedStation}`
-        );
+        const response = await fetch(`http://localhost:8002/station-data/${selectedStation}`);
         const result = await response.json();
         setChartData(result.data || []);
         setFilteredData(result.data?.filter((item) => item.Year >= 2000) || []);
@@ -75,9 +73,7 @@ const StationChart = () => {
       }
 
       try {
-        const yearlyResponse = await fetch(
-          `http://localhost:8000/station-yearly-data/${selectedStation}`
-        );
+        const yearlyResponse = await fetch(`http://localhost:8002/station-yearly-data/${selectedStation}`);
         const yearlyResult = await yearlyResponse.json();
         setYearlyRainfallData(
           yearlyResult.data?.filter((item) => item.Year >= 2000) || []
