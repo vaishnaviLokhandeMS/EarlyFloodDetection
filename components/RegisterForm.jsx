@@ -2,32 +2,97 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    if(!name || !email || !password)
+    {
+        setError("All fields are necessary !!")
+    }
+
+    try 
+    {
+        const resUserExists = await fetch("api/userExists", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email
+          })
+        }); 
+
+        const {user} = await resUserExists.json()
+
+        if(user)
+        {
+          setError("User already exists !!")
+          return
+        }
+
+        const res = await fetch("api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name,email,password,
+            }),
+        });
+
+        if(res.ok)
+        {
+            const form = e.target;
+            form.reset();
+            router.push("/")
+        }
+        else
+        {
+            console.log("Registration Failed")
+        }
+    } 
+    catch (error) 
+    {
+        console.log("Error occured during registration")
+    }
+  }
+  
   return (
     <div className="grid place-items-center h-screen">
       <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
         <h1 className="text-xl font-bold my-4">Register</h1>
 
-        <form className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
+            onChange={(e) => setName(e.target.value)}
             name="name"
-            required
+            // required
             type="text"
             placeholder="Full Name"
             className="border rounded p-2"
           />
           <input
+            onChange={(e) => setEmail(e.target.value)}
             name="email"
-            required
+            // required
             type="email"
             placeholder="Email"
             className="border rounded p-2"
           />
           <input
+            onChange={(e) => setPassword(e.target.value)}
             name="password"
-            required
+            // required
             type="password"
             placeholder="Password"
             className="border rounded p-2"
