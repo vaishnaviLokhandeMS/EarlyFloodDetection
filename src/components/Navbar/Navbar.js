@@ -1,7 +1,15 @@
-import styles from "./Navbar.module.css";
-import { FaWater } from "react-icons/fa"; // Water droplet icon for flood theme
+"use client";
+
+import styles from "../Navbar/Navbar.module.css";
+import { FaWater } from "react-icons/fa";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const Navbar = () => {
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -9,13 +17,24 @@ const Navbar = () => {
         <h1>Flood Detection</h1>
       </div>
       <ul className={styles.navLinks}>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Predictions</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+          <Link href="#dashboard">Dashboard</Link>
+        </li>
+        <li>
+          <Link href="#predictions">Predictions</Link>
+        </li>
+        <li>
+          <Link href="#reports">Reports</Link>
+        </li>
+        <li>
+          <Link href="#contact">Contact</Link>
+        </li>
+        <li>
+          <button className={styles.logoutBtn} onClick={handleSignOut}>
+            Logout
+          </button>
+        </li>
       </ul>
-      <button className={styles.loginBtn}>Login</button>
     </nav>
   );
 };

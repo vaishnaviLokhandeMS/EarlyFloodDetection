@@ -1,0 +1,45 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboard-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+}
+
+section {
+    /* padding: 2rem 1rem; */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.upload-card {
+    background-color: #11233a;
+    border-radius: 12px;
+    padding: 2rem;
+    color: white;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+a {
+    color: #00d4ff;
+}
+
+a:hover {
+    color: #00ffa2;
+}

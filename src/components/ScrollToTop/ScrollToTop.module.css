@@ -1,0 +1,21 @@
+.scrollButton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 30%;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scrollButton:hover {
+    background-color: rgba(67, 56, 202, 0.5);
+    transform: translateY(-3px);
+}

@@ -1,0 +1,100 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #0b1c2c;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.register-box {
+    background-color: #12283d;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border-top: 4px solid #00b7ff;
+    box-shadow: 0 0 15px rgba(0, 183, 255, 0.15);
+    width: 100%;
+    max-width: 400px;
+    color: #ffffff;
+}
+
+.register-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.register-input {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #1f3a52;
+    color: white;
+}
+
+.register-input::placeholder {
+    color: #aacbe1;
+}
+
+.register-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #00b7ff;
+}
+
+.register-button {
+    padding: 0.8rem;
+    background-color: #007acc;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #006bb3;
+}
+
+.error-msg {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.login-link {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: #cccccc;
+}
+
+.login-link .link {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.login-link .link:visited {
+    color: #ffffff;
+}
+
+.login-link .link:hover {
+    color: #00b7ff;
+}

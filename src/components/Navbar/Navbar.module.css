@@ -2,14 +2,13 @@
 .navbar {
   display: flex;
   align-items: center;
-  background-color: #1a1a2e;
-  color: white;
+  background-color: #070F2B;
+  color: #EEEEEE;
   padding: 10px 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   font-family: "Poppins", sans-serif;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -18,13 +17,12 @@
   font-weight: 600;
 }
 
-/* Navigation Links */
 .navLinks {
   display: flex;
   gap: 15px;
   list-style: none;
-  margin-left: auto; /* Pushes nav links to the right */
-  margin-right: 20px; /* Space between nav links and login button */
+  margin-left: auto; 
+  margin-right: 20px;
 }
 
 .navLinks li a {
@@ -40,8 +38,8 @@
   text-shadow: 0 0 6px rgba(0, 170, 255, 0.7);
 }
 
-/* Login Button */
-.loginBtn {
+/* Logout Button */
+.logoutBtn {
   background-color: transparent;
   color: white;
   border: 1.5px solid #00aaff;
@@ -52,7 +50,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.loginBtn:hover {
+.logoutBtn:hover {
   background-color: #00aaff;
   color: #1a1a2e;
   box-shadow: 0 0 8px rgba(0, 170, 255, 0.8);

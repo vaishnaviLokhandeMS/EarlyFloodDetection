@@ -43,9 +43,14 @@ class FloodInput(BaseModel):
     ALT: int
     Period: float
 
-EMAIL_SENDER = "lokhande.vaishnavi@outlook.com"
-EMAIL_PASSWORD = "Mangal22@1234"
-EMAIL_RECEIVER = "baragemanish6258@gmail.com"
+# Sender's email
+EMAIL_SENDER = ""
+
+# Sender's password
+EMAIL_PASSWORD = ""
+
+# Receiver's email
+EMAIL_RECEIVER = ""
 
 class AlertRequest(BaseModel):
     message: str
@@ -94,7 +99,7 @@ class AlertRequest(BaseModel):
 
 
 TWILIO_ACCOUNT_SID = 'ACef2e76361c794fb29705a634f814b41b'
-TWILIO_AUTH_TOKEN = '2ab95028f5d547f161f217ec0a0f20d0'
+TWILIO_AUTH_TOKEN = "a42ba48bf08c528398d33dd503d06099"
 TWILIO_WHATSAPP_NUMBER = '+13465478463'  
 PERSONAL_WHATSAPP_NUMBER = '+917841856258'     
 
@@ -154,7 +159,7 @@ async def get_station_data():
         return response_data
     except Exception as e:
         return {"error": str(e)}
-    
+
 @app.get("/station-data/{station_name}")
 async def get_station_data(station_name: str):
     try:
